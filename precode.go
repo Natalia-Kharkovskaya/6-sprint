@@ -100,6 +100,8 @@ func deleteTaskId(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Запрос не найден", http.StatusNoContent)
 		return
 	}
+	delete(tasks, id)
+
 	resp, err := json.Marshal(task)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
